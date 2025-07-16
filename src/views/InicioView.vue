@@ -16,9 +16,8 @@
 <style scoped>
 .inicio {
   text-align: center;
-  padding: 2rem;
   max-width: 600px;
-  margin: auto;
+  padding: 2rem;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -26,7 +25,6 @@
 
 .inicio h2 {
   color: #1e88e5;
-  margin-bottom: 1rem;
 }
 
 .inicio p {

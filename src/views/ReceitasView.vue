@@ -78,5 +78,4 @@ const removerReceita = (index) => {
 
 <style scoped>
 
-
 </style>

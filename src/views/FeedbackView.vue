@@ -54,6 +54,7 @@ const dica = computed(() => {
 </template>
 
 <style scoped>
+
 .resumo {
   margin-bottom: 2rem;
   font-size: 1.1rem;
