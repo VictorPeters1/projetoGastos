@@ -1,19 +1,3 @@
-<template>
-  <section>
-    <h2>Seu Feedback Financeiro</h2>
-
-    <div class="resumo">
-      <p><strong>Total de receitas:</strong> R$ {{ totalReceitas.toFixed(2) }}</p>
-      <p><strong>Total de gastos:</strong> R$ {{ totalGastos.toFixed(2) }}</p>
-    </div>
-
-    <div class="mensagem" v-if="mensagem">
-      <p>{{ mensagem }}</p>
-      <p v-if="dica" class="dica">{{ dica }}</p>
-    </div>
-  </section>
-</template>
-
 <script setup>
 import { computed } from 'vue'
 import { useReceitasStore } from '@/stores/receitas'
@@ -31,7 +15,7 @@ const mensagem = computed(() => {
   } else if (totalReceitas.value === totalGastos.value) {
     return 'Atenção: sua receita está no limite com seus gastos.'
   } else {
-    return 'Alerta! Você está gastando mais do que ganha.'
+    return 'Cuidado! Você está gastando mais do que ganha.'
   }
 })
 
@@ -52,6 +36,22 @@ const dica = computed(() => {
   return null
 })
 </script>
+
+<template>
+  <section>
+    <h2>Seu Feedback Financeiro</h2>
+
+    <div class="resumo">
+      <p><strong>Total de receitas:</strong> R$ {{ totalReceitas.toFixed(2) }}</p>
+      <p><strong>Total de gastos:</strong> R$ {{ totalGastos.toFixed(2) }}</p>
+    </div>
+
+    <div class="mensagem" v-if="mensagem">
+      <p>{{ mensagem }}</p>
+      <p v-if="dica" class="dica">{{ dica }}</p>
+    </div>
+  </section>
+</template>
 
 <style scoped>
 .resumo {

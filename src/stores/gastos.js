@@ -8,6 +8,9 @@ export const useGastosStore = defineStore('gastos', {
     adicionarGasto(gasto) {
       this.listaGastos.push({ ...gasto })
     },
+    removerGasto(index) {
+      this.listaGastos.splice(index, 1)
+    },
     limparGastos() {
       this.listaGastos = []
     }
