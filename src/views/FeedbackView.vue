@@ -2,9 +2,11 @@
 import { computed } from 'vue'
 import { useReceitasStore } from '@/stores/receitas'
 import { useGastosStore } from '@/stores/gastos'
+import { useRouter } from 'vue-router'
 
 const receitasStore = useReceitasStore()
 const gastosStore = useGastosStore()
+const router = useRouter()
 
 const totalReceitas = computed(() => receitasStore.totalReceitas)
 const totalGastos = computed(() => gastosStore.totalGastos)
@@ -18,6 +20,14 @@ const mensagem = computed(() => {
     return 'Cuidado! Você está gastando mais do que ganha.'
   }
 })
+
+const reiniciarAplicacao = () => {
+  if (confirm('Tem certeza que deseja apagar todos os dados e reiniciar?')) {
+    receitasStore.limparReceitas()
+    gastosStore.limparGastos()
+    router.push('/')
+  }
+}
 
 const dica = computed(() => {
   const sup = gastosStore.listaGastos.filter(g => g.tipo === 'superfluo')
@@ -50,6 +60,9 @@ const dica = computed(() => {
       <p>{{ mensagem }}</p>
       <p v-if="dica" class="dica">{{ dica }}</p>
     </div>
+
+    <button class="botao btn-excluir" @click="reiniciarAplicacao">Nova Análise</button>
+
   </section>
 </template>
 
@@ -66,6 +79,7 @@ const dica = computed(() => {
   border-radius: 8px;
   font-size: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .mensagem.dica {
